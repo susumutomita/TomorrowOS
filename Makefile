@@ -1,22 +1,18 @@
 .PHONY: install
 install:
 	bun install
-	cd packages/frontend && bun install
-	cd packages/backend && bun install
 
 .PHONY: install_ci
 install_ci:
 	bun install --frozen-lockfile
-	cd packages/frontend && bun install --frozen-lockfile
-	cd packages/backend && bun install --frozen-lockfile
+
+.PHONY: dev
+dev:
+	bun run dev
 
 .PHONY: build
 build:
 	bun run build
-
-.PHONY: clean
-clean:
-	bun run clean
 
 .PHONY: test
 test:
@@ -25,10 +21,6 @@ test:
 .PHONY: test_coverage
 test_coverage:
 	bun run test:coverage
-
-.PHONY: test_debug
-test_debug:
-	bun run test:debug
 
 .PHONY: test_watch
 test_watch:
@@ -42,6 +34,10 @@ lint:
 lint_text:
 	bun run lint:text
 
+.PHONY: typecheck
+typecheck:
+	bun run typecheck
+
 .PHONY: format
 format:
 	bun run format
@@ -51,12 +47,20 @@ format_check:
 	bun run format:check
 
 .PHONY: before-commit
-before-commit: lint_text format_check test build
+before-commit: lint_text format_check typecheck test build
 
-.PHONY: run_frontend
-run_frontend:
-	bun run start:frontend
+.PHONY: db_generate
+db_generate:
+	bun run db:generate
 
-.PHONY: run_backend
-run_backend:
-	bun run start:backend
+.PHONY: db_migrate
+db_migrate:
+	bun run db:migrate
+
+.PHONY: db_push
+db_push:
+	bun run db:push
+
+.PHONY: db_studio
+db_studio:
+	bun run db:studio

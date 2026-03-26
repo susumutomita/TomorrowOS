@@ -36,12 +36,20 @@ jobs:
           safe-chain setup-ci
 
       # Supply Chain Security: Disable lifecycle scripts during install
-      - name: Install packages via packages.json
+      - name: Install packages
         env:
           npm_config_ignore_scripts: "true"
           CI: "true"
         run: make install_ci
 
-      - name: lint test format
-        run: |
-          make before-commit
+      - name: Lint
+        run: make lint
+
+      - name: Type check
+        run: make typecheck
+
+      - name: Test
+        run: make test
+
+      - name: Build
+        run: make build
