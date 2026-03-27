@@ -57,7 +57,7 @@
     "textlint-rule-preset-ja-spacing": "^2.2.0",
     "textlint-rule-preset-ja-technical-writing": "^12.0.2",
     "textlint-rule-spellcheck-tech-word": "^5.0.0",
-    "typescript": "^5",
+    "typescript": "^6",
     "vitest": "^3.2.1"
   },
   "ignoreScripts": [
