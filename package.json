@@ -21,7 +21,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.39.0",
+    "@anthropic-ai/sdk": "^0.80.0",
     "@auth/drizzle-adapter": "^1.7.4",
     "drizzle-orm": "^0.44.0",
     "googleapis": "^148.0.0",
